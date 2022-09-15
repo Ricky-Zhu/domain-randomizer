@@ -41,7 +41,7 @@ class RandomizedEnvWrapper(gym.Wrapper):
         nrand = len(self.unwrapped.dimensions)
         self.unwrapped.randomization_space = spaces.Box(0, 1, shape=(nrand,), dtype=np.float32)
 
-    def randomize(self, randomized_values=[-1]):
+    def randomize(self, randomized_values=[-1], return_env_params=False):
         """Sets the parameter values such that a call to`update_randomized_params()`
         will generate an environment with those settings.
 
@@ -49,6 +49,7 @@ class RandomizedEnvWrapper(gym.Wrapper):
         Passing a list of 'random' strings will give a purely random value for that dimension
         Passing a list of -1 integers will have the same effect.
         """
+        env_params = {}
         for dimension, randomized_value in enumerate(randomized_values):
             if randomized_value == 'default':
                 self.unwrapped.dimensions[dimension].current_value = \
@@ -59,8 +60,11 @@ class RandomizedEnvWrapper(gym.Wrapper):
                     self.unwrapped.dimensions[dimension].rescale(randomized_value)
             else:  # random
                 self.unwrapped.dimensions[dimension].randomize()
+            env_params[self.unwrapped.dimensions[dimension].name] = self.unwrapped.dimensions[dimension].current_value
 
         self.unwrapped.update_randomized_params()
+        if return_env_params:
+            return env_params
 
     def step(self, action):
         return self.env.step(action)

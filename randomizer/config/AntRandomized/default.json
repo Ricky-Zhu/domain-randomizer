@@ -1,0 +1,45 @@
+{
+  "env": "AntRandomized-v0",
+  "dimensions": [
+    {
+      "name": "torso",
+      "default": 0.25,
+      "multiplier_min": 1.0,
+      "multiplier_max": 1.5
+    },
+    {
+      "name": "ankle",
+      "default": 0.08,
+      "multiplier_min": 1.0,
+      "multiplier_max": 1.5
+    },
+    {
+      "name": "leg",
+      "default": 0.08,
+      "multiplier_min": 1.0,
+      "multiplier_max": 1.5
+    }
+  ],
+  "geom_map": {
+    "torso": [
+      "torso_geom"
+    ],
+    "leg": [
+      "left_ankle_geom",
+      "right_ankle_geom",
+      "third_ankle_geom",
+      "fourth_ankle_geom"
+    ],
+    "ankle": [
+      "left_leg_geom",
+      "right_leg_geom",
+      "back_leg_geom",
+      "rightback_leg_geom"
+    ]
+  },
+  "suffixes": {
+    "torso": "0.25",
+    "ankle": "0.08",
+    "leg": "0.08"
+  }
+}

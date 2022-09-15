@@ -61,7 +61,7 @@ class RandomizedFetchHookEnv(fetch_env.FetchEnv, utils.EzPickle):
             # original image is upside-down, so flip it
             return data[::-1, :, :]
         elif mode == 'human':
-            self._get_viewer().render()
+            self._get_viewer(mode).render()
 
         return super(RandomizedFetchHookEnv, self).render(*args, **kwargs)
 

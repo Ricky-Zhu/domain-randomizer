@@ -170,3 +170,22 @@ register(
     }
 )
 
+register(
+    id='AntRandomizedEnv-v0',
+    entry_point='randomizer.ant:AntRandomizedEnv',
+    max_episode_steps=1000,
+    kwargs={
+        'config': 'randomizer/config/AntRandomized/default.json',
+        'xml_name': 'ant.xml'
+    }
+)
+
+register(
+    id='InvertedDoublePendulumRandomizedEnv-v0',
+    entry_point='randomizer.inverted_double_pendulum:InvertedDoublePendulumRandomizedEnv',
+    max_episode_steps=1000,
+    kwargs={
+        'config': 'randomizer/config/InvertedDoublePendulumRandomized/default.json',
+        'xml_name': 'inverted_double_pendulum.xml'
+    }
+)
