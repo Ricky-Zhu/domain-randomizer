@@ -9,7 +9,7 @@
     },
     {
       "name": "pole",
-      "default": 0.045,
+      "default": 0.049,
       "multiplier_min": 1.0,
       "multiplier_max": 1.5
     }
@@ -19,8 +19,7 @@
       "cart"
     ],
     "pole": [
-      "cpole",
-      "cpole2"
+      "cpole"
     ]
   },
   "suffixes": {

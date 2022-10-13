@@ -4,14 +4,16 @@ import numpy as np
 from randomizer.wrappers import RandomizedEnvWrapper
 import time
 
-env = RandomizedEnvWrapper(gym.make('HalfCheetahRandomizedEnv-v0'), seed=123)
-# env=gym.make('Ant-v2')
-
+eval_env = RandomizedEnvWrapper(gym.make('InvertedPendulumRandomizedEnv-v0'), seed=123)
+env=eval_env
+# env=gym.make('HalfCheetah-v2')
+params = env.randomize(env.randomized_default, return_env_params=True)
 obs = env.reset()
 for i in range(2000):
-    obs, _, done, _ = env.step(np.zeros((6)))
-    # env.render()
-    if i % 100 == 0:
-        env.randomize([-1]*5,return_env_params=True)
+    obs, r, done, _ = env.step(np.zeros((1)))
+    env.render()
+    if done:
         env.reset()
-
+    if i % 100 == 0:
+        params = env.randomize(env.randomized_default, return_env_params=True)
+        env.reset()

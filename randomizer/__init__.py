@@ -181,11 +181,30 @@ register(
 )
 
 register(
+    id='ReacherRandomizedEnv-v0',
+    entry_point='randomizer.reacher:ReacherRandomizedEnv',
+    max_episode_steps=50,
+    kwargs={
+        'config': 'randomizer/config/ReacherRandomized/default.json',
+        'xml_name': 'reacher.xml'
+    }
+)
+
+register(
     id='InvertedDoublePendulumRandomizedEnv-v0',
     entry_point='randomizer.inverted_double_pendulum:InvertedDoublePendulumRandomizedEnv',
     max_episode_steps=1000,
     kwargs={
         'config': 'randomizer/config/InvertedDoublePendulumRandomized/default.json',
         'xml_name': 'inverted_double_pendulum.xml'
+    }
+)
+register(
+    id='InvertedPendulumRandomizedEnv-v0',
+    entry_point='randomizer.inverted_pendulum:InvertedPendulumRandomizedEnv',
+    max_episode_steps=1000,
+    kwargs={
+        'config': 'randomizer/config/InvertedPendulumRandomized/default.json',
+        'xml_name': 'inverted_pendulum.xml'
     }
 )
