@@ -7,7 +7,6 @@ from .randomized_locomotion import RandomizedLocomotionEnv
 class InvertedPendulumRandomizedEnv(RandomizedLocomotionEnv):
     def __init__(self, **kwargs):
         RandomizedLocomotionEnv.__init__(self, **kwargs)
-        self.reward_threshold = 950.
 
     def step(self, a):
         reward = 1.0
