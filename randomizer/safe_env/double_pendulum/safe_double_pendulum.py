@@ -64,14 +64,25 @@ class SafeDoublePendulumEnv(SafeEnv, DoublePendulumEnv):
 
 
 class RandomizeSafeDoublePendulumEnv(SafeDoublePendulumEnv):
-    def __init__(self, **kwargs):
+    def __init__(self, with_var=False, **kwargs):
+        self.with_var = with_var
         self.reference_path = os.path.join(os.path.dirname(mujoco_env.__file__), "assets",
                                            "inverted_double_pendulum.xml")
         self.reference_xml = et.parse(self.reference_path)
         self.root = self.reference_xml.getroot()
         super().__init__(**kwargs)
 
-    def set_values(self, cart=0.1, pole=0.6):
+    def set_with_var(self, with_var):
+        self.with_var = with_var
+
+    def set_values(self, cart_mean=0.1, pole_mean=0.6, cart_var=None, pole_var=None):
+        if self.with_var and cart_var is not None and pole_var is not None:
+            cart = np.random.normal(loc=cart_mean, scale=np.sqrt(cart_var))
+            pole = np.random.normal(loc=pole_mean, scale=np.sqrt(pole_var))
+        else:
+            cart = cart_mean
+            pole = pole_mean
+
         # modify the cart size
         cart_ref = self.root.find(".//geom[@name='cart']")
         cart_value = "{:3f} {:3f}".format(cart, cart)
