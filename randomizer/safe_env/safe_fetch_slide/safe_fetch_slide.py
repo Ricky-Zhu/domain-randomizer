@@ -6,6 +6,7 @@ from randomizer.safe_env.safe_fetch_slide.fetch_env import FetchEnv
 
 # Ensure we get the path separator correct on windows
 MODEL_XML_PATH = dirname(dirname(os.path.abspath(__file__))) + '/assets/robotics/fetch/slide.xml'
+print(MODEL_XML_PATH)
 
 
 class SafeFetchSlideEnv(FetchEnv, utils.EzPickle):

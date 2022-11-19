@@ -2,6 +2,7 @@ import numpy as np
 
 from gym.envs.robotics import rotations, utils
 from randomizer.safe_env.safe_fetch_slide import robot_env
+import xml.etree.ElementTree as et
 
 
 def goal_distance(goal_a, goal_b):
@@ -34,6 +35,8 @@ class FetchEnv(robot_env.RobotEnv):
             initial_qpos (dict): a dictionary of joint names and values that define the initial configuration
             reward_type ('sparse' or 'dense'): the reward type, i.e. sparse or dense
         """
+
+        self._keep_dist = 0.1
         self.gripper_extra_height = gripper_extra_height
         self.block_gripper = block_gripper
         self.has_object = has_object
@@ -122,6 +125,20 @@ class FetchEnv(robot_env.RobotEnv):
             'desired_goal': self.goal.copy(),
         }
 
+    @property
+    def keep_dist(self):
+        return self._keep_dist
+
+    def _get_dangers_pos(self):
+        return self.danger_regions
+
+    def _get_dangers_size(self):
+        return self.sim.model.site_size[0][0]
+
+    def _get_obj_size(self):
+        return self.sim.model.geom_size[-1][0]
+
+
     def _viewer_setup(self):
         body_id = self.sim.model.body_name2id('robot0:gripper_link')
         lookat = self.sim.data.body_xpos[body_id]
@@ -189,15 +206,16 @@ class FetchEnv(robot_env.RobotEnv):
             valid = True
             for other_region, other_region_pos in danger_regions.items():
                 dist = np.linalg.norm(xy - other_region_pos)
-                if dist < self.keepout_dist:
+                if dist < self.keep_dist:
                     valid = False
                     return valid
             return valid
 
         danger_regions = {}
         danger_regions['goal'] = self.goal.copy()[:2]
+        danger_regions['object'] = self.sim.data.get_joint_qpos('object0:joint')[:2]
         for i in range(self.danger_region_num):
-            for _ in range(100):
+            while True:
                 xy = np.random.uniform([x_min, y_min], [x_max, y_max])
                 if valid_layout(xy, danger_regions):
                     danger_regions['danger{}'.format(i)] = xy
@@ -205,23 +223,17 @@ class FetchEnv(robot_env.RobotEnv):
 
 
         danger_regions.pop('goal')
+        danger_regions.pop('object')
+
         return danger_regions
 
     @property
-    def danger_region_size(self):
-        return 0.05
-
-    @property
     def danger_region_sample_range(self):
-        x_min = 1.1
-        x_max = 1.7
-        y_min = 0.55
-        y_max = 0.75
+        x_min = 0.8
+        x_max = 1.8
+        y_min = 0.4
+        y_max = 1.0
         return x_min, x_max, y_min, y_max
-
-    @property
-    def keepout_dist(self):
-        return 0.048
 
     def _is_success(self, achieved_goal, desired_goal):
         d = goal_distance(achieved_goal, desired_goal)
