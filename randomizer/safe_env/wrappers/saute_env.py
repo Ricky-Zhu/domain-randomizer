@@ -37,7 +37,7 @@ def saute_env(cls):
 
             if saute_discount_factor < 1:
                 safety_budget = safety_budget * (1 - saute_discount_factor ** self.max_ep_len) / (
-                            1 - saute_discount_factor) / self.max_ep_len
+                        1 - saute_discount_factor) / self.max_ep_len
             self._safety_budget = np.float32(safety_budget)
 
             self._safety_state = 1.
@@ -59,6 +59,9 @@ def saute_env(cls):
         @property
         def saute_discount_factor(self):
             return self._saute_discount_factor
+
+        def render(self, mode='human'):
+            self.wrap.render(mode)
 
         @property
         def unsafe_reward(self):

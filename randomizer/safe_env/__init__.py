@@ -26,6 +26,13 @@ register(
     entry_point='randomizer.safe_env.double_pendulum.safe_double_pendulum:RandomizeSafeDoublePendulumEnv',
     max_episode_steps=200,
 )
+
+register(
+    id='SauteRandomizeSafeDoublePendulum-v0',
+    entry_point='randomizer.safe_env.double_pendulum.safe_double_pendulum:SautedRandomizableDoublePendulumEnv',
+    max_episode_steps=200,
+)
+
 register(
     id='SafeFetchSlide-v0',
     entry_point='randomizer.safe_env.safe_fetch_slide.safe_fetch_slide:SafeFetchSlideEnv',
