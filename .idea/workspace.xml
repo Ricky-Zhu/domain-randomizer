@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e49b046d-a900-4a4f-b66e-4435c8b48725" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modify randomizer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modify randomizer.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/new_test_env.py" beforeDir="false" afterPath="$PROJECT_DIR$/new_test_env.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/randomizer/safe_env/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/randomizer/safe_env/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/randomizer/safe_env/double_pendulum/safe_double_pendulum.py" beforeDir="false" afterPath="$PROJECT_DIR$/randomizer/safe_env/double_pendulum/safe_double_pendulum.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/randomizer/safe_env/wrappers/saute_env.py" beforeDir="false" afterPath="$PROJECT_DIR$/randomizer/safe_env/wrappers/saute_env.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -262,7 +256,16 @@
       <workItem from="1669201498682" duration="3460000" />
       <workItem from="1669624326360" duration="735000" />
       <workItem from="1669655967682" duration="5081000" />
+      <workItem from="1669720946440" duration="2406000" />
     </task>
+    <task id="LOCAL-00001" summary="add saute double pendulum env">
+      <created>1669720966726</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1669720966726</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -278,6 +281,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add saute double pendulum env" />
+    <option name="LAST_COMMIT_MESSAGE" value="add saute double pendulum env" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
