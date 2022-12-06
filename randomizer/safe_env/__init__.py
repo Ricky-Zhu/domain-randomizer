@@ -51,6 +51,8 @@ register(
     max_episode_steps=150,
 )
 
+
+############### Saute env for fetch slide with 4 danger regions and 1 danger region (saimple) #####
 register(
     id='SauteRandomizeSafeFetchSlide-v0',
     entry_point='randomizer.safe_env.safe_fetch_slide.randomized_safe_fetch_slide_with_cost:SauteRandomizableFetchSlide',
@@ -58,13 +60,21 @@ register(
 )
 
 register(
+    id='SauteRandomizeSafeFetchSlideSimple-v0',
+    entry_point='randomizer.safe_env.safe_fetch_slide.randomized_safe_fetch_slide_with_cost_simple:SauteRandomizableFetchSlideSimple',
+    max_episode_steps=100,
+)
+
+#########################################################################################################
+
+register(
     id='SafeFetchSlideWithCostFnSimple-v0',
     entry_point='randomizer.safe_env.safe_fetch_slide.randomized_safe_fetch_slide_with_cost_simple:SafeFetchSlideWithCostSimple',
-    max_episode_steps=50,
+    max_episode_steps=100,
 )
 
 register(
     id='RandomizeSafeFetchSlideCostSimpleEnv-v0',
     entry_point='randomizer.safe_env.safe_fetch_slide.randomized_safe_fetch_slide_with_cost_simple:RandomizeSafeFetchSlideCostSimpleEnv',
-    max_episode_steps=50,
+    max_episode_steps=100,
 )

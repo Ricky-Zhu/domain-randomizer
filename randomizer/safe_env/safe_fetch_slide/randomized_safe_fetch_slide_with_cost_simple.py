@@ -1,15 +1,8 @@
 from randomizer.safe_env.safe_fetch_slide.safe_fetch_slide_simple import SafeFetchSlideSimpleEnv
 import numpy as np
-from os.path import dirname
-from gym.envs.mujoco import InvertedDoublePendulumEnv
 from randomizer.safe_env.wrappers.saute_env import saute_env
 from randomizer.safe_env.wrappers.safe_env_slide import SafeEnvSlide
-import os
-import xml.etree.ElementTree as et
-from typing import Dict, Tuple
-from gym.envs.mujoco import mujoco_env
-import json
-import mujoco_py
+
 
 class SafeFetchSlideWithCostSimple(SafeEnvSlide, SafeFetchSlideSimpleEnv):
     """Safe fetch_slide env with cost function."""
@@ -34,8 +27,10 @@ class SafeFetchSlideWithCostSimple(SafeEnvSlide, SafeFetchSlideSimpleEnv):
 
 
 class RandomizeSafeFetchSlideCostSimpleEnv(SafeFetchSlideWithCostSimple):
-    def __init__(self, with_var=True, **kwargs):
+    def __init__(self, with_var=True, mode='train', augment_hazard_info_in_state=False, **kwargs):
         self.with_var = with_var
+        self._mode = mode
+        self.augment_hazard_info_in_state = augment_hazard_info_in_state
         super().__init__(**kwargs)
 
     def set_with_var(self, with_var):
@@ -106,4 +101,30 @@ class RandomizeSafeFetchSlideCostSimpleEnv(SafeFetchSlideWithCostSimple):
             # else:
             #     target_value = mean
         self._keep_dist = target_value
+
+    def _get_obs(self):
+
+        obs_to_return = super()._get_obs()
+
+        if self.augment_hazard_info_in_state:
+
+            hazard_regions = []
+            for danger_region_index, danger_region_value in self.danger_regions.items():
+                hazard_regions.append(danger_region_value)
+            hazard_regions = np.concatenate(hazard_regions)
+            obs_to_return['observation'] = np.concatenate([obs_to_return['observation'], hazard_regions])
+
+        return obs_to_return
+
+@saute_env
+class SauteRandomizableFetchSlideSimple(RandomizeSafeFetchSlideCostSimpleEnv):
+    "saute env"
+
+
+if __name__ == "__main__":
+    # test the saute env
+    test_env = SauteRandomizableFetchSlideSimple(augment_hazard_info_in_state=True)
+    s = test_env.reset()
+    for i in range(100):
+        s, r, d, info = test_env.step(test_env.action_space.sample())
 
