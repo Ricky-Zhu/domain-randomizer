@@ -50,3 +50,9 @@ register(
     entry_point='randomizer.safe_env.safe_fetch_slide.randomized_safe_fetch_slide_with_cost:RandomizeSafeFetchSlideCostEnv',
     max_episode_steps=150,
 )
+
+register(
+    id='SauteRandomizeSafeFetchSlide-v0',
+    entry_point='randomizer.safe_env.safe_fetch_slide.randomized_safe_fetch_slide_with_cost:SauteRandomizableFetchSlide',
+    max_episode_steps=150,
+)

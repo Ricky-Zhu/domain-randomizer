@@ -2,7 +2,8 @@ import numpy as np
 import torch
 from gym import Env
 from gym import spaces
-from randomizer.safe_env.utils import Array
+from gym.spaces.dict import Dict
+from typing import Union
 
 
 def saute_env(cls):
@@ -45,12 +46,25 @@ def saute_env(cls):
             self._unsafe_reward = unsafe_reward
 
             self.action_space = self.wrap.action_space
-            self.obs_high = self.wrap.observation_space.high
-            self.obs_low = self.wrap.observation_space.low
-            if self.use_state_augmentation:
-                self.obs_high = np.array(np.hstack([self.obs_high, np.inf]), dtype=np.float32)
-                self.obs_low = np.array(np.hstack([self.obs_low, -np.inf]), dtype=np.float32)
-            self.observation_space = spaces.Box(high=self.obs_high, low=self.obs_low)
+            self.observation_space = self.wrap.observation_space
+            self.is_gcp_obs = type(self.observation_space) == Dict
+            if self.is_gcp_obs:
+                self.obs_high = self.wrap.observation_space['observation'].high
+                self.obs_low = self.wrap.observation_space['observation'].low
+                if self.use_state_augmentation:
+                    self.obs_high = np.array(np.hstack([self.obs_high, np.inf]), dtype=np.float32)
+                    self.obs_low = np.array(np.hstack([self.obs_low, -np.inf]), dtype=np.float32)
+                self.observation_space = Dict({'observation': spaces.Box(high=self.obs_high, low=self.obs_low),
+                                               'desired_goal': self.observation_space['desired_goal'],
+                                               'achieved_goal': self.observation_space['achieved_goal']})
+
+            else:
+                self.obs_high = self.wrap.observation_space.high
+                self.obs_low = self.wrap.observation_space.low
+                if self.use_state_augmentation:
+                    self.obs_high = np.array(np.hstack([self.obs_high, np.inf]), dtype=np.float32)
+                    self.obs_low = np.array(np.hstack([self.obs_low, -np.inf]), dtype=np.float32)
+                self.observation_space = spaces.Box(high=self.obs_high, low=self.obs_low)
 
         @property
         def safety_budget(self):
@@ -59,9 +73,6 @@ def saute_env(cls):
         @property
         def saute_discount_factor(self):
             return self._saute_discount_factor
-
-        def render(self, mode='human'):
-            self.wrap.render(mode)
 
         @property
         def unsafe_reward(self):
@@ -79,9 +90,19 @@ def saute_env(cls):
             augmented_state = self._augment_state(state, self._safety_state)
             return augmented_state
 
+        def render(self, mode='human'):
+            self.wrap.render(mode)
+
         def _augment_state(self, state: np.ndarray, safety_state: np.ndarray):
             """Augmenting the state with the safety state, if needed"""
-            augmented_state = np.hstack([state, safety_state]) if self.use_state_augmentation else state
+            if self.is_gcp_obs:
+                augmented_state = state.copy()
+                augmented_state['observation'] = np.hstack(
+                    [augmented_state['observation'], safety_state]) if self.use_state_augmentation else augmented_state[
+                    'observation']
+
+            else:
+                augmented_state = np.hstack([state, safety_state]) if self.use_state_augmentation else state
             return augmented_state
 
         def safety_step(self, cost: np.ndarray) -> np.ndarray:
@@ -100,7 +121,7 @@ def saute_env(cls):
             augmented_state = self._augment_state(next_obs, next_safety_state)
             return augmented_state, reward, done, info
 
-        def reshape_reward(self, reward: Array, next_safety_state: Array):
+        def reshape_reward(self, reward, next_safety_state):
             """ Reshaping the reward. """
             if self.use_reward_shaping:
                 reward = reward * (next_safety_state > 0) + self.unsafe_reward * (next_safety_state <= 0)

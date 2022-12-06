@@ -17,7 +17,7 @@ class FetchEnv(robot_env.RobotEnv):
     def __init__(
             self, model_path, n_substeps, gripper_extra_height, block_gripper,
             has_object, target_in_the_air, target_offset, obj_range, target_range,
-            distance_threshold, initial_qpos, danger_regions_num, reward_type,
+            distance_threshold, initial_qpos, danger_regions_num, reward_type
     ):
         """Initializes a new Fetch environment.
 
@@ -138,7 +138,6 @@ class FetchEnv(robot_env.RobotEnv):
     def _get_obj_size(self):
         return self.sim.model.geom_size[-1][0]
 
-
     def _viewer_setup(self):
         body_id = self.sim.model.body_name2id('robot0:gripper_link')
         lookat = self.sim.data.body_xpos[body_id]
@@ -220,7 +219,6 @@ class FetchEnv(robot_env.RobotEnv):
                 if valid_layout(xy, danger_regions):
                     danger_regions['danger{}'.format(i)] = xy
                     break
-
 
         danger_regions.pop('goal')
         danger_regions.pop('object')
