@@ -56,3 +56,15 @@ register(
     entry_point='randomizer.safe_env.safe_fetch_slide.randomized_safe_fetch_slide_with_cost:SauteRandomizableFetchSlide',
     max_episode_steps=150,
 )
+
+register(
+    id='SafeFetchSlideWithCostFnSimple-v0',
+    entry_point='randomizer.safe_env.safe_fetch_slide.randomized_safe_fetch_slide_with_cost_simple:SafeFetchSlideWithCostSimple',
+    max_episode_steps=50,
+)
+
+register(
+    id='RandomizeSafeFetchSlideCostSimpleEnv-v0',
+    entry_point='randomizer.safe_env.safe_fetch_slide.randomized_safe_fetch_slide_with_cost_simple:RandomizeSafeFetchSlideCostSimpleEnv',
+    max_episode_steps=50,
+)

@@ -5,7 +5,8 @@ import numpy as np
 from randomizer.wrappers import RandomizedEnvWrapper
 import time
 import gym
-env_name = 'RandomizeSafeFetchSlideCostEnv-v0'
+# env_name = 'RandomizeSafeFetchSlideCostEnv-v0'
+env_name = 'RandomizeSafeFetchSlideCostSimpleEnv-v0'
 
 env = gym.make(env_name)
 env.reset()
