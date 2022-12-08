@@ -171,22 +171,27 @@ class FetchSimpleEnv(robot_simple_env.RobotEnv):
 
         # Randomize start position of object.
         if self.has_object:
+            object_xpos = self.initial_gripper_xpos[:2]
+            while np.linalg.norm(object_xpos - self.initial_gripper_xpos[:2]) < 0.05:
+                object_xpos = self.initial_gripper_xpos[:2] + self.np_random.uniform(-self.obj_range, self.obj_range, size=2)
             x_min, x_max, y_min, y_max = self.danger_region_sample_range
-
-            object_xpos = np.random.uniform([x_min, y_min], [x_max, y_max])
-            goal_xy = np.random.uniform([x_min, y_min], [x_max, y_max])
+            goal_xyz = self.initial_gripper_xpos[:3] + self.np_random.uniform(-self.target_range, self.target_range, size=3)
+            goal_xyz = goal_xyz + self.target_offset
+            goal_xyz[2] = self.height_offset
             while True:
-                if np.linalg.norm(object_xpos - goal_xy) >= 0.5:
+                if np.linalg.norm(object_xpos - goal_xyz[:2]) >= 0.25:
                     break
-                object_xpos = np.random.uniform([x_min, y_min], [x_max, y_max])
-                goal_xy = np.random.uniform([x_min, y_min], [x_max, y_max])
+                goal_xyz = self.initial_gripper_xpos[:3] + self.np_random.uniform(-self.target_range, self.target_range,
+                                                                                  size=3)
+                goal_xyz = goal_xyz + self.target_offset
+                goal_xyz[2] = self.height_offset
 
             object_qpos = self.sim.data.get_joint_qpos('object0:joint')
             assert object_qpos.shape == (7,)
             object_qpos[:2] = object_xpos
             self.sim.data.set_joint_qpos('object0:joint', object_qpos)
 
-            self.goal_in_fetch = np.hstack([goal_xy,self.height_offset])
+            self.goal_in_fetch = goal_xyz
             if self.target_in_the_air and self.np_random.uniform() < 0.3:
                 self.goal_in_fetch[2] += self.np_random.uniform(0, 0.45)
 
@@ -241,7 +246,8 @@ class FetchSimpleEnv(robot_simple_env.RobotEnv):
     def _sample_danger_regions(self):
 
         danger_regions = {}
-        ratio = np.random.uniform(0, 1)
+        # ratio = np.random.uniform(0, 1)
+        ratio = 0.5
         goal_xy_for_dangers = self.goal_in_fetch[:2]
         object_xy_for_dangers = self.sim.data.get_joint_qpos('object0:joint')[:2]
         xy = ratio * goal_xy_for_dangers + (1 - ratio) * object_xy_for_dangers
@@ -257,10 +263,10 @@ class FetchSimpleEnv(robot_simple_env.RobotEnv):
 
     @property
     def danger_region_sample_range(self):
-        x_min = 1.1
-        x_max = 1.5
-        y_min = 0.45
-        y_max = 1.05
+        x_min = 1.0
+        x_max = 1.8
+        y_min = 0.37
+        y_max = 1.07
         return x_min, x_max, y_min, y_max
 
     def _is_success(self, achieved_goal, desired_goal):

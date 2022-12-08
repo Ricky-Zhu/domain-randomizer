@@ -36,7 +36,7 @@ class RandomizeSafeFetchSlideCostSimpleEnv(SafeFetchSlideWithCostSimple):
     def set_with_var(self, with_var):
         self.with_var = with_var
 
-    def set_friction_coefficient_value(self,value, automatic = False, mean = [1.0, 0.005,0.0001], var = [0.01,0.000001,0.00000001]):
+    def set_friction_coefficient_value(self,value, automatic = False, mean = [0.3, 0.005, 0.0001], var = [0.01,0.000001,0.00000001]):
         if not automatic:
             target_value = value
         else:

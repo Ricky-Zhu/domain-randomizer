@@ -12,14 +12,15 @@ print(MODEL_XML_PATH)
 class SafeFetchSlideSimpleEnv(FetchSimpleEnv, utils.EzPickle):
     def __init__(self, reward_type='sparse'):
         initial_qpos = {
-            'robot0:slide0': 0.405,
+            'robot0:slide0': 0.25,
             'robot0:slide1': 0.48,
             'robot0:slide2': 0.0,
             'object0:joint': [1.25, 0.53, 0.41, 1., 0., 0., 0.],
         }
         FetchSimpleEnv.__init__(
             self, MODEL_XML_PATH, has_object=True, block_gripper=True, n_substeps=20,
-            gripper_extra_height=0.0, target_in_the_air=False, target_offset=0.0,
-            obj_range=0.15, target_range=0.15, distance_threshold=0.05,
+            gripper_extra_height=-0.02, target_in_the_air=False, target_offset=np.array([0.1, 0.0, 0.0]),
+            obj_range=0.05, target_range=0.15, distance_threshold=0.05,
             initial_qpos=initial_qpos, danger_regions_num=1, reward_type=reward_type)
+
         utils.EzPickle.__init__(self)

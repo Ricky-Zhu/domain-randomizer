@@ -15,8 +15,8 @@ for i in range(1000):
     s,r,d,info=env.step(env.action_space.sample())
     if d:
         env.reset()
-        # env.set_friction_coefficient_value([0,0,0],automatic=True)
-        # env.set_object_size_value([0,0],automatic=True)
-        # env.set_radi_danger_region_value(0,automatic=True)
-        # env.set_danger_offset_value(0.03,automatic=True)
+        env.set_friction_coefficient_value([0,0,0],automatic=True)
+        env.set_object_size_value([0,0],automatic=True)
+        env.set_radi_danger_region_value(0,automatic=True)
+        env.set_danger_offset_value(0.03,automatic=True)
 
