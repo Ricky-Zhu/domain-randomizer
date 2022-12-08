@@ -1,8 +1,6 @@
 from gym.envs.registration import register
 import os.path as osp
 from randomizer.safe_env.pendulum.safe_pendulum import pendulum_cfg, SafePendulumEnv, SautedPendulumEnv
-from randomizer.safe_env.double_pendulum.safe_double_pendulum import double_pendulum_cfg, SafeDoublePendulumEnv, \
-    RandomizeSafeDoublePendulumEnv
 from randomizer.safe_env.safe_fetch_slide.safe_fetch_slide import SafeFetchSlideEnv
 
 register(

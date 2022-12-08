@@ -10,22 +10,7 @@ import torch
 import mujoco_py
 from gym import spaces
 from randomizer.safe_env.utils import Array
-
-double_pendulum_cfg = dict(
-    action_dim=1,
-    action_range=[
-        -1,
-        1],
-    unsafe_reward=-200.,
-    saute_discount_factor=1.0,
-    max_ep_len=200,
-    min_rel_budget=1.0,
-    max_rel_budget=1.0,
-    test_rel_budget=1.0,
-    use_reward_shaping=True,
-    use_state_augmentation=True
-
-)
+from randomizer.safe_env.wrappers.saute_env import saute_env
 
 
 class DoublePendulumEnv(InvertedDoublePendulumEnv):
@@ -156,7 +141,6 @@ class SautedRandomizableDoublePendulumEnv(RandomizeSafeDoublePendulumEnv):
         super().__init__(**kwargs)
 
         self.action_space = self.action_space
-
 
     @property
     def safety_budget(self):

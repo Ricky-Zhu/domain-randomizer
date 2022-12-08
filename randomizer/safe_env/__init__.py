@@ -1,9 +1,10 @@
 from gym.envs.registration import register
 import os.path as osp
 from randomizer.safe_env.pendulum.safe_pendulum import pendulum_cfg, SafePendulumEnv, SautedPendulumEnv
-from randomizer.safe_env.double_pendulum.safe_double_pendulum import double_pendulum_cfg, SafeDoublePendulumEnv, \
+from randomizer.safe_env.double_pendulum.safe_double_pendulum import SafeDoublePendulumEnv, \
     RandomizeSafeDoublePendulumEnv
 from randomizer.safe_env.safe_fetch_slide.safe_fetch_slide import SafeFetchSlideEnv
+from randomizer.safe_env.saute_cfgs import double_pendulum_cfg
 
 print('LOADING SAFE ENVIROMENTS')
 
@@ -27,11 +28,6 @@ register(
     max_episode_steps=200,
 )
 
-register(
-    id='SauteRandomizeSafeDoublePendulum-v0',
-    entry_point='randomizer.safe_env.double_pendulum.safe_double_pendulum:SautedRandomizableDoublePendulumEnv',
-    max_episode_steps=200,
-)
 
 register(
     id='SafeFetchSlide-v0',
@@ -52,7 +48,7 @@ register(
 )
 
 
-############### Saute env for fetch slide with 4 danger regions and 1 danger region (saimple) #####
+############### Saute env for fetch slide with 4 danger regions and 1 danger region (simple) #####
 register(
     id='SauteRandomizeSafeFetchSlide-v0',
     entry_point='randomizer.safe_env.safe_fetch_slide.randomized_safe_fetch_slide_with_cost:SauteRandomizableFetchSlide',
@@ -65,6 +61,11 @@ register(
     max_episode_steps=100,
 )
 
+register(
+    id='SauteRandomizeSafeDoublePendulum-v0',
+    entry_point='randomizer.safe_env.double_pendulum.safe_double_pendulum:SautedRandomizableDoublePendulumEnv',
+    max_episode_steps=200,
+)
 #########################################################################################################
 
 register(

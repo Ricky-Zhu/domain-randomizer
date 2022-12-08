@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e49b046d-a900-4a4f-b66e-4435c8b48725" name="Changes" comment="add saute double pendulum env">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modify randomizer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modify randomizer.iml" afterDir="false" />
+    <list default="true" id="e49b046d-a900-4a4f-b66e-4435c8b48725" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/randomizer/safe_env/saute_cfgs.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/randomizer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/randomizer/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/randomizer/safe_env/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/randomizer/safe_env/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/randomizer/safe_env/safe_fetch_slide/randomized_safe_fetch_slide_with_cost_simple.py" beforeDir="false" afterPath="$PROJECT_DIR$/randomizer/safe_env/safe_fetch_slide/randomized_safe_fetch_slide_with_cost_simple.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/randomizer/safe_env/double_pendulum/safe_double_pendulum.py" beforeDir="false" afterPath="$PROJECT_DIR$/randomizer/safe_env/double_pendulum/safe_double_pendulum.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -27,6 +34,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/ruiqi/projects/envs/domain-randomizer",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
@@ -280,6 +289,8 @@
       <workItem from="1669720946440" duration="2492000" />
       <workItem from="1670268380992" duration="1087000" />
       <workItem from="1670320533064" duration="13435000" />
+      <workItem from="1670405375752" duration="3165000" />
+      <workItem from="1670494241487" duration="2423000" />
     </task>
     <task id="LOCAL-00001" summary="add saute double pendulum env">
       <created>1669720966726</created>
@@ -302,7 +313,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670268426718</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add saute fetch slide env">
+      <created>1670365551085</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1670365551085</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -321,7 +339,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add saute double pendulum env" />
-    <option name="LAST_COMMIT_MESSAGE" value="add saute double pendulum env" />
+    <MESSAGE value="add saute fetch slide env" />
+    <option name="LAST_COMMIT_MESSAGE" value="add saute fetch slide env" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -333,7 +352,7 @@
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/randomizer/safe_env/double_pendulum/safe_double_pendulum.py</url>
-          <line>179</line>
+          <line>163</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
