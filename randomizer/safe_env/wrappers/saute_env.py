@@ -78,6 +78,15 @@ def saute_env(cls):
         def unsafe_reward(self):
             return self._unsafe_reward
 
+        def set_values(self, **kwargs):
+            try:
+                self.wrap.set_values(**kwargs)
+            except:
+                print('the given parameters does not match!')
+
+        def set_with_var(self, with_var):
+            self.wrap.with_var = with_var
+
         def reset(self) -> np.ndarray:
             """Resets the environment."""
             state = self.wrap.reset()

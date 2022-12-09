@@ -4,7 +4,7 @@ from randomizer.safe_env.pendulum.safe_pendulum import pendulum_cfg, SafePendulu
 from randomizer.safe_env.double_pendulum.safe_double_pendulum import SafeDoublePendulumEnv, \
     RandomizeSafeDoublePendulumEnv
 from randomizer.safe_env.safe_fetch_slide.safe_fetch_slide import SafeFetchSlideEnv
-from randomizer.safe_env.saute_cfgs import double_pendulum_cfg
+from randomizer.safe_env.saute_cfgs import double_pendulum_cfg,safe_fetch_slide_cfg
 
 print('LOADING SAFE ENVIROMENTS')
 
@@ -28,7 +28,6 @@ register(
     max_episode_steps=200,
 )
 
-
 register(
     id='SafeFetchSlide-v0',
     entry_point='randomizer.safe_env.safe_fetch_slide.safe_fetch_slide:SafeFetchSlideEnv',
@@ -47,24 +46,26 @@ register(
     max_episode_steps=150,
 )
 
-
 ############### Saute env for fetch slide with 4 danger regions and 1 danger region (simple) #####
 register(
     id='SauteRandomizeSafeFetchSlide-v0',
     entry_point='randomizer.safe_env.safe_fetch_slide.randomized_safe_fetch_slide_with_cost:SauteRandomizableFetchSlide',
     max_episode_steps=150,
+    kwargs = safe_fetch_slide_cfg
 )
 
 register(
     id='SauteRandomizeSafeFetchSlideSimple-v0',
     entry_point='randomizer.safe_env.safe_fetch_slide.randomized_safe_fetch_slide_with_cost_simple:SauteRandomizableFetchSlideSimple',
     max_episode_steps=100,
+    kwargs = safe_fetch_slide_cfg
 )
 
 register(
     id='SauteRandomizeSafeDoublePendulum-v0',
-    entry_point='randomizer.safe_env.double_pendulum.safe_double_pendulum:SautedRandomizableDoublePendulumEnv',
-    max_episode_steps=200,
+    entry_point='randomizer.safe_env.double_pendulum.safe_double_pendulum:SauteRandomizeSafeDoublePendulum',
+    max_episode_steps=double_pendulum_cfg['max_ep_len'],
+    kwargs= double_pendulum_cfg
 )
 #########################################################################################################
 

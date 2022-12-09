@@ -3,8 +3,7 @@ import numpy as np
 from randomizer.safe_env.wrappers.safe_env_slide import SafeEnvSlide
 from randomizer.safe_env.wrappers.saute_env import saute_env
 
-saute_fetch_slide_cfg = {'unsafe_reward': -10.,
-                         'safety_budget': 0.}
+
 
 
 class SafeFetchSlideWithCost(SafeEnvSlide, SafeFetchSlideEnv):
