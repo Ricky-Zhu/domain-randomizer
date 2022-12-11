@@ -1,5 +1,6 @@
 double_pendulum_cfg = dict(
     unsafe_reward=-200.,
+    safety_budget=40.,
     saute_discount_factor=1.0,
     max_ep_len=200,
     min_rel_budget=1.0,
@@ -12,7 +13,7 @@ double_pendulum_cfg = dict(
 
 safe_fetch_slide_cfg = dict(
     unsafe_reward=-10.,
-    safety_budget=0.1,
+    safety_budget=0.5,
     saute_discount_factor=1.0,
     min_rel_budget=1.0,
     max_rel_budget=1.0,
