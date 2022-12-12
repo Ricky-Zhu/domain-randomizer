@@ -145,8 +145,8 @@ class FetchSimpleEnv(robot_simple_env.RobotEnv):
         for idx, value in enumerate(lookat):
             self.viewer.cam.lookat[idx] = value
         self.viewer.cam.distance = 2.5
-        self.viewer.cam.azimuth = 132.
-        self.viewer.cam.elevation = -14.
+        self.viewer.cam.azimuth = 165.
+        self.viewer.cam.elevation = -40.
 
     def _render_callback(self):
         # Visualize target.

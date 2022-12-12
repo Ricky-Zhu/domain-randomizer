@@ -4,7 +4,8 @@
     <list default="true" id="e49b046d-a900-4a4f-b66e-4435c8b48725" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/new_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/new_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/randomizer/safe_env/safe_fetch_slide/randomized_safe_fetch_slide_with_cost_simple.py" beforeDir="false" afterPath="$PROJECT_DIR$/randomizer/safe_env/safe_fetch_slide/randomized_safe_fetch_slide_with_cost_simple.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/randomizer/safe_env/safe_fetch_slide/fetch_simple_env.py" beforeDir="false" afterPath="$PROJECT_DIR$/randomizer/safe_env/safe_fetch_slide/fetch_simple_env.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/randomizer/safe_env/wrappers/saute_env.py" beforeDir="false" afterPath="$PROJECT_DIR$/randomizer/safe_env/wrappers/saute_env.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +38,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "last_opened_file_path": "/home/ruiqi/temp/SAUTE",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/ruiqi/projects/SAC_FetchSlide",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
@@ -189,6 +191,9 @@
       <module name="modify randomizer" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$APPLICATION_CONFIG_DIR$/scratches" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -289,7 +294,8 @@
       <workItem from="1670268380992" duration="1087000" />
       <workItem from="1670320533064" duration="13435000" />
       <workItem from="1670405375752" duration="3165000" />
-      <workItem from="1670494241487" duration="22461000" />
+      <workItem from="1670494241487" duration="22791000" />
+      <workItem from="1670801942434" duration="2897000" />
     </task>
     <task id="LOCAL-00001" summary="add saute double pendulum env">
       <created>1669720966726</created>
@@ -340,7 +346,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670757805776</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="add reward shaping to encourage the gripper to approach the object">
+      <created>1670789306809</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1670789306809</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -361,7 +374,8 @@
     <MESSAGE value="add saute double pendulum env" />
     <MESSAGE value="add saute fetch slide env" />
     <MESSAGE value="update the saute configs" />
-    <option name="LAST_COMMIT_MESSAGE" value="update the saute configs" />
+    <MESSAGE value="add reward shaping to encourage the gripper to approach the object" />
+    <option name="LAST_COMMIT_MESSAGE" value="add reward shaping to encourage the gripper to approach the object" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -413,13 +427,13 @@
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/new_test.py</url>
-          <line>14</line>
+          <line>13</line>
           <option name="timeStamp" value="47" />
         </line-breakpoint>
-        <line-breakpoint suspend="THREAD" type="python-line">
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/randomizer/safe_env/safe_fetch_slide/randomized_safe_fetch_slide_with_cost_simple.py</url>
           <line>19</line>
-          <option name="timeStamp" value="48" />
+          <option name="timeStamp" value="49" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -429,7 +443,7 @@
     <SUITE FILE_PATH="coverage/domain_randomizer$scratch.coverage" NAME="scratch Coverage Results" MODIFIED="1670609899915" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
     <SUITE FILE_PATH="coverage/domain_randomizer$fetch_env.coverage" NAME="fetch_env Coverage Results" MODIFIED="1670328098112" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/randomizer/safe_env/safe_fetch_slide" />
     <SUITE FILE_PATH="coverage/domain_randomizer$scratch_2.coverage" NAME="scratch_2 Coverage Results" MODIFIED="1670620798298" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
-    <SUITE FILE_PATH="coverage/domain_randomizer$new_test.coverage" NAME="new_test Coverage Results" MODIFIED="1670788783208" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/domain_randomizer$new_test.coverage" NAME="new_test Coverage Results" MODIFIED="1670840639823" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/domain_randomizer$randomized_safe_fetch_slide_with_cost_simple.coverage" NAME="randomized_safe_fetch_slide_with_cost_simple Coverage Results" MODIFIED="1670365163185" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/randomizer/safe_env/safe_fetch_slide" />
     <SUITE FILE_PATH="coverage/domain_randomizer$randomized_safe_fetch_slide_with_cost.coverage" NAME="randomized_safe_fetch_slide_with_cost Coverage Results" MODIFIED="1670330254736" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/randomizer/safe_env/safe_fetch_slide" />
     <SUITE FILE_PATH="coverage/domain_randomizer$safe_double_pendulum.coverage" NAME="safe_double_pendulum Coverage Results" MODIFIED="1670608522862" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/randomizer/safe_env/double_pendulum" />

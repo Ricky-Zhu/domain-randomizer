@@ -12,7 +12,7 @@ env = gym.make(env_name, reward_type='dense')
 obs = env.reset()
 for i in range(2000):
     obs, r, done, _ = env.step(np.zeros(1))
-    # env.render()
+    env.render()
     if done:
         env.reset()
     # if i % 100 == 0:

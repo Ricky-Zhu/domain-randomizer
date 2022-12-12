@@ -99,8 +99,8 @@ def saute_env(cls):
             augmented_state = self._augment_state(state, self._safety_state)
             return augmented_state
 
-        def render(self, mode='human'):
-            self.wrap.render(mode)
+        def render(self, mode='human', width=500, height=500):
+            return self.wrap.render(mode, width, height)
 
         def _augment_state(self, state: np.ndarray, safety_state: np.ndarray):
             """Augmenting the state with the safety state, if needed"""
