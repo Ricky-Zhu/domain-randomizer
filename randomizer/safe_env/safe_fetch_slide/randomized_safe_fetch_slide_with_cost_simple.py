@@ -45,7 +45,7 @@ class SafeFetchSlideWithCostSimple(SafeEnvSlide, SafeFetchSlideSimpleEnv):
 
 
 class RandomizeSafeFetchSlideCostSimpleEnv(SafeFetchSlideWithCostSimple):
-    def __init__(self, with_var=True, mode='train', augment_hazard_info_in_state=False, **kwargs):
+    def __init__(self, with_var=True, mode='train', augment_hazard_info_in_state=True, **kwargs):
         self.with_var = with_var
         self._mode = mode
         self.augment_hazard_info_in_state = augment_hazard_info_in_state
