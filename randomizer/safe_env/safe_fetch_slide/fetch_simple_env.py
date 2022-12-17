@@ -95,6 +95,9 @@ class FetchSimpleEnv(robot_simple_env.RobotEnv):
         dt = self.sim.nsubsteps * self.sim.model.opt.timestep
         grip_velp = self.sim.data.get_site_xvelp('robot0:grip') * dt
         robot_qpos, robot_qvel = utils.robot_get_obs(self.sim)
+        danger_position_info = self.danger_regions['danger0']
+        danger_position_info = danger_position_info
+        danger_size_info = self.sim.model.site_size[0][0]
         if self.has_object:
             object_pos = self.sim.data.get_site_xpos('object0')
             # rotations
@@ -104,6 +107,8 @@ class FetchSimpleEnv(robot_simple_env.RobotEnv):
             object_velr = self.sim.data.get_site_xvelr('object0') * dt
             # gripper state
             object_rel_pos = object_pos - grip_pos
+            object_danger_rel_pos = np.linalg.norm(object_pos[:2] - danger_position_info)
+            gripper_danger_rel_pos = np.linalg.norm(grip_pos[:2] - danger_position_info)
             object_velp -= grip_velp
         else:
             object_pos = object_rot = object_velp = object_velr = object_rel_pos = np.zeros(0)
@@ -114,9 +119,11 @@ class FetchSimpleEnv(robot_simple_env.RobotEnv):
             achieved_goal = grip_pos.copy()
         else:
             achieved_goal = np.squeeze(object_pos.copy())
+
+
         obs = np.concatenate([
             grip_pos, object_pos.ravel(), object_rel_pos.ravel(), gripper_state, object_rot.ravel(),
-            object_velp.ravel(), object_velr.ravel(), grip_velp, gripper_vel,
+            object_velp.ravel(), object_velr.ravel(), grip_velp, gripper_vel,danger_position_info,np.array([danger_size_info]),np.array([object_danger_rel_pos]),np.array([gripper_danger_rel_pos]),
         ])
 
         return {
@@ -263,8 +270,8 @@ class FetchSimpleEnv(robot_simple_env.RobotEnv):
 
     @property
     def danger_region_sample_range(self):
-        x_min = 1.0
-        x_max = 1.8
+        x_min = 0.95
+        x_max = 1.45
         y_min = 0.37
         y_max = 1.07
         return x_min, x_max, y_min, y_max

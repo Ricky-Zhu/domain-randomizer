@@ -3,7 +3,7 @@
   <component name="NewModuleRootManager">
     <content url="file://$USER_HOME$/anaconda3/envs/dr/lib/python3.7/site-packages/gym" />
     <content url="file://$MODULE_DIR$" />
-    <orderEntry type="jdk" jdkName="Python 3.7 (dr) (2)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.6 (mujoco)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

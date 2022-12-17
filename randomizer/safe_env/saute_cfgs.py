@@ -13,7 +13,7 @@ double_pendulum_cfg = dict(
 
 safe_fetch_slide_cfg = dict(
     unsafe_reward=-10.,
-    safety_budget=0.5,
+    safety_budget=30.0,
     saute_discount_factor=1.0,
     min_rel_budget=1.0,
     max_rel_budget=1.0,

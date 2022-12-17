@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e49b046d-a900-4a4f-b66e-4435c8b48725" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/randomizer/safe_env/wrappers/gcp.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/new_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/new_test.py" afterDir="false" />
+    <list default="true" id="e49b046d-a900-4a4f-b66e-4435c8b48725" name="Changes" comment="add reward shaping to encourage the gripper to approach the object">
+      <change beforePath="$PROJECT_DIR$/randomizer/safe_env/safe_fetch_slide/fetch_simple_env.py" beforeDir="false" afterPath="$PROJECT_DIR$/randomizer/safe_env/safe_fetch_slide/fetch_simple_env.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/randomizer/safe_env/safe_fetch_slide/randomized_safe_fetch_slide_with_cost_simple.py" beforeDir="false" afterPath="$PROJECT_DIR$/randomizer/safe_env/safe_fetch_slide/randomized_safe_fetch_slide_with_cost_simple.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/randomizer/safe_env/safe_fetch_slide/safe_fetch_slide_simple.py" beforeDir="false" afterPath="$PROJECT_DIR$/randomizer/safe_env/safe_fetch_slide/safe_fetch_slide_simple.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/randomizer/safe_env/saute_cfgs.py" beforeDir="false" afterPath="$PROJECT_DIR$/randomizer/safe_env/saute_cfgs.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,13 +36,9 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/ruiqi/projects/safety-starter-agents",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
   <component name="RunManager" selected="Python.new_test">
     <configuration default="true" type="DjangoTestsConfigurationType">
       <module name="domain-randomizer" />
@@ -75,6 +71,19 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="ADDITIONAL_ARGS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Python.FlaskServer">
+      <module name="domain-randomizer" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
       <method v="2" />
     </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
@@ -207,19 +216,6 @@
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="Python.FlaskServer">
-      <module name="domain-randomizer" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="launchJavascriptDebuger" value="false" />
       <method v="2" />
     </configuration>
     <configuration default="true" type="Tox" factoryName="Tox">
@@ -408,12 +404,12 @@
           <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
-          <url>file://$USER_HOME$/anaconda3/envs/dr/lib/python3.7/site-packages/gym/envs/registration.py</url>
+          <url>file://$PROJECT_DIR$/../anaconda3/envs/dr/lib/python3.7/site-packages/gym/envs/registration.py</url>
           <line>66</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
-          <url>file://$USER_HOME$/anaconda3/envs/dr/lib/python3.7/site-packages/gym/envs/registration.py</url>
+          <url>file://$PROJECT_DIR$/../anaconda3/envs/dr/lib/python3.7/site-packages/gym/envs/registration.py</url>
           <line>60</line>
           <option name="timeStamp" value="35" />
         </line-breakpoint>
@@ -423,12 +419,12 @@
           <option name="timeStamp" value="38" />
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
-          <url>file://$USER_HOME$/anaconda3/envs/dr/lib/python3.7/site-packages/gym/envs/registration.py</url>
+          <url>file://$PROJECT_DIR$/../anaconda3/envs/dr/lib/python3.7/site-packages/gym/envs/registration.py</url>
           <line>144</line>
           <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
-          <url>file://$USER_HOME$/anaconda3/envs/dr/lib/python3.7/site-packages/gym/envs/registration.py</url>
+          <url>file://$PROJECT_DIR$/../anaconda3/envs/dr/lib/python3.7/site-packages/gym/envs/registration.py</url>
           <line>39</line>
           <option name="timeStamp" value="40" />
         </line-breakpoint>
@@ -449,16 +445,5 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/domain_randomizer$new_test_env.coverage" NAME="new_test_env Coverage Results" MODIFIED="1670364900297" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/domain_randomizer$scratch.coverage" NAME="scratch Coverage Results" MODIFIED="1670609899915" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
-    <SUITE FILE_PATH="coverage/domain_randomizer$fetch_env.coverage" NAME="fetch_env Coverage Results" MODIFIED="1670328098112" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/randomizer/safe_env/safe_fetch_slide" />
-    <SUITE FILE_PATH="coverage/domain_randomizer$scratch_2.coverage" NAME="scratch_2 Coverage Results" MODIFIED="1670620798298" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
-    <SUITE FILE_PATH="coverage/domain_randomizer$new_test.coverage" NAME="new_test Coverage Results" MODIFIED="1670860043231" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/domain_randomizer$randomized_safe_fetch_slide_with_cost_simple.coverage" NAME="randomized_safe_fetch_slide_with_cost_simple Coverage Results" MODIFIED="1670365163185" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/randomizer/safe_env/safe_fetch_slide" />
-    <SUITE FILE_PATH="coverage/domain_randomizer$randomized_safe_fetch_slide_with_cost.coverage" NAME="randomized_safe_fetch_slide_with_cost Coverage Results" MODIFIED="1670330254736" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/randomizer/safe_env/safe_fetch_slide" />
-    <SUITE FILE_PATH="coverage/domain_randomizer$safe_double_pendulum.coverage" NAME="safe_double_pendulum Coverage Results" MODIFIED="1670608522862" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/randomizer/safe_env/double_pendulum" />
-    <SUITE FILE_PATH="coverage/domain_randomizer$test.coverage" NAME="test Coverage Results" MODIFIED="1669714342803" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

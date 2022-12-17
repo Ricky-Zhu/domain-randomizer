@@ -20,7 +20,7 @@ class SafeFetchSlideSimpleEnv(FetchSimpleEnv, utils.EzPickle):
         FetchSimpleEnv.__init__(
             self, MODEL_XML_PATH, has_object=True, block_gripper=True, n_substeps=20,
             gripper_extra_height=-0.02, target_in_the_air=False, target_offset=np.array([0.1, 0.0, 0.0]),
-            obj_range=0.05, target_range=0.15, distance_threshold=0.05,
+            obj_range=0.05, target_range=0.15, distance_threshold=0.015,
             initial_qpos=initial_qpos, danger_regions_num=1, reward_type=reward_type)
 
         utils.EzPickle.__init__(self)

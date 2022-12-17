@@ -24,28 +24,36 @@ class SafeFetchSlideWithCostSimple(SafeEnvSlide, SafeFetchSlideSimpleEnv):
             grip_pos = self.sim.data.get_site_xpos('robot0:grip')
             object_pos = self.sim.data.get_site_xpos('object0')
             dist_obj_grip = np.linalg.norm(grip_pos - object_pos)
-            rew = -d + (-dist_obj_grip)
+            rew = -d + ((-dist_obj_grip) * 10)
             return rew
 
     def _safety_cost_fn(self, state: np.ndarray, action: np.ndarray, next_state: np.ndarray, danger_size, obj_radi_info,
                         dangers) -> np.ndarray:
-        coef = 1.0
+        coef = 0.1
         total_cost = 0
         object_position = state['achieved_goal'][:2]
         for i in range(len(dangers)):
             tem_name = 'danger{}'.format(i)
             danger_position = dangers[tem_name]
+            max_dis = np.sqrt(0.85)
             distance = np.linalg.norm(object_position - danger_position)
             total_radi = danger_size + obj_radi_info
             overshoot = total_radi - distance
-            modified_distance = max(overshoot, 0)
-            cost = modified_distance * coef
+            if overshoot >= 0:
+                dis_cost = (max_dis - distance) * coef
+                modi_dis_cost = max(0,dis_cost)
+                cost = modi_dis_cost + 5.0
+            else:
+                dis_cost = (max_dis - distance) * coef
+                cost = max(0,dis_cost)
+            # modified_distance = max(overshoot, 0)
+            # cost = modified_distance * coef
             total_cost = total_cost + cost
         return total_cost
 
 
 class RandomizeSafeFetchSlideCostSimpleEnv(SafeFetchSlideWithCostSimple):
-    def __init__(self, with_var=True, mode='train', augment_hazard_info_in_state=True, **kwargs):
+    def __init__(self, with_var=True, mode='train', augment_hazard_info_in_state=False, **kwargs):
         self.with_var = with_var
         self._mode = mode
         self.augment_hazard_info_in_state = augment_hazard_info_in_state
